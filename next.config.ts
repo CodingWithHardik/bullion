@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  images: {
+    remotePatterns: [new URL('https://cdn.dpskmun.com/**')],
+  },
 };
 
 export default nextConfig;
