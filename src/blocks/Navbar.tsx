@@ -2,16 +2,13 @@
 
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
-
-const REGISTER_URL = "http://register.dpskmun.com";
+import { StartButton } from "@/components/elements/StartButton";
 
 export default function Navbars() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-  const [closed] = useState<boolean>(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,7 +39,7 @@ export default function Navbars() {
           "fixed inset-x-0 top-0 z-50 transition-colors",
           scrolled
             ? "backdrop-blur-md bg-transparent text-white"
-            : "bg-[#05000f] text-white",
+            : "bg-background text-white",
         )}
         aria-label="Primary"
       >
@@ -96,7 +93,7 @@ export default function Navbars() {
               <Logo />
             </div>
             <div className="flex items-center justify-end">
-              <SartButton />
+              <StartButton />
             </div>
           </div>
         </div>
@@ -114,46 +111,26 @@ export default function Navbars() {
           <button
             type="button"
             aria-label="Close menu"
-            className="absolute inset-0 bg-background/60 backdrop-blur-md"
+            className="absolute inset-0 bg-background backdrop-blur-md"
             onClick={() => setOpen(false)}
           />
           <div
             id="mobile-menu"
             ref={panelRef}
             className={cn(
-              "absolute left-0 top-0 bottom-0 w-screen translate-x-0 bg-card/80 text-card-foreground backdrop-blur-xl shadow-xl ring-1 overflow-y-auto",
+              "absolute left-0 top-0 bottom-0 w-screen translate-x-0 bg-background text-card-foreground backdrop-blur-xl shadow-xl ring-1 overflow-y-auto",
               "animate-in slide-in-from-left duration-200",
               "bg-background/60 backdrop-blur-md",
             )}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex w-full justify-center px-4 pt-6 pb-4">
-              <SartButton onNavigate={() => setOpen(false)} />
+              <StartButton onNavigate={() => setOpen(false)} />
             </div>
           </div>
         </div>
       ) : null}
     </>
-  );
-}
-
-type RegisterButtonProps = {
-  onNavigate?: () => void;
-};
-
-function SartButton({ onNavigate }: RegisterButtonProps) {
-  return (
-    <Link
-      href="/game"
-      onClick={onNavigate}
-      aria-label="Register"
-      className={cn(
-        "h-11 px-6 text-base bg-linear-30 from-red-800 via-red-400 to-red-600 rounded-4xl font-bold",
-        "inline-flex items-center justify-center text-white transition-opacity hover:opacity-90",
-      )}
-    >
-      Start Game
-    </Link>
   );
 }
 
@@ -168,7 +145,7 @@ function Logo() {
         src="/BULLION_DARK.png"
         width={64}
         height={80}
-        alt="DPSKMUN logo"
+        alt="Bullion logo"
         className="w-auto"
       />
     </Link>

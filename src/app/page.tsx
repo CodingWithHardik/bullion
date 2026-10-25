@@ -1,12 +1,33 @@
 
 import Navbars from "@/blocks/Navbar";
 import { StockVelocity } from "@/blocks/StockVelocity";
+import CubeHero from "@/components/elements/CubeHero";
+import { StartButton } from "@/components/elements/StartButton";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
     <Navbars/>
+    <StockVelocity />
+     <section className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-32 px-6 py-16 md:flex-row md:justify-between">
+      <div className="max-w-xl text-center md:text-left">
+        <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+          Let Your Instincts Trade
+        </h1>
+        <p className="mt-5 text-lg text-gray-600">
+          Discover stocks, make your move and see how your market instincts stack up with Bullion
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+          <StartButton />
+        </div>
+      </div>
+
+      <CubeHero
+        src="/stock.png"
+        className="h-96 w-96 shrink-0 md:h-64 md:w-64"
+      />
+    </section>
     <StockVelocity />
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
