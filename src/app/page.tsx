@@ -1,4 +1,5 @@
 
+import Footer from "@/blocks/Footer";
 import Navbars from "@/blocks/Navbar";
 import { StockVelocity } from "@/blocks/StockVelocity";
 import CubeHero from "@/components/elements/CubeHero";
@@ -10,7 +11,7 @@ export default function Home() {
     <>
     <Navbars buttonVisible={true}/>
     <StockVelocity />
-     <section className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-32 px-6 py-16 md:flex-row md:justify-between">
+     <section className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-16 md:gap-32 px-6 py-16 md:flex-row md:justify-between">
       <div className="max-w-xl text-center md:text-left">
         <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
           Let Your Instincts Trade
@@ -25,7 +26,7 @@ export default function Home() {
 
       <CubeHero
         src="/stock.png"
-        className="h-96 w-96 shrink-0 md:h-64 md:w-64"
+        className="block h-48 w-48 shrink-0 sm:h-64 sm:w-64 md:h-96 md:w-96"
       />
     </section>
     <StockVelocity />
@@ -91,6 +92,8 @@ export default function Home() {
           </a>
         </div>
       </main>
-    </div></>
+    </div>
+    <Footer buttonVisible={true} />
+    </>
   );
 }
