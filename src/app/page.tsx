@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-    <Navbars/>
+    <Navbars buttonVisible={true}/>
     <StockVelocity />
      <section className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-32 px-6 py-16 md:flex-row md:justify-between">
       <div className="max-w-xl text-center md:text-left">

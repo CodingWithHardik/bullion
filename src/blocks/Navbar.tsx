@@ -6,10 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { StartButton } from "@/components/elements/StartButton";
 
-export default function Navbars() {
+export default function Navbars({ buttonVisible = false }: { buttonVisible?: boolean }) {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const panelRef = useRef<HTMLDivElement>(null);
+  const [buttonVisibility, setButtonVisibility] = useState(buttonVisible)
 
   useEffect(() => {
     const onScroll = (): void => setScrolled(window.scrollY > 8);
@@ -46,41 +47,45 @@ export default function Navbars() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid h-20 grid-cols-[1fr_auto_1fr] items-center lg:hidden">
             <div className="flex items-center">
-              <button
-                type="button"
-                aria-label={open ? "Close menu" : "Open menu"}
-                aria-expanded={open}
-                aria-controls="mobile-menu"
-                onClick={() => setOpen((v) => !v)}
-                className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <span className="sr-only">
-                  {open ? "Close sidebar" : "Open sidebar"}
-                </span>
-                <div className="relative h-6 w-6" aria-hidden="true">
-                  <span
-                    className={cn(
-                      "absolute left-0 right-0 top-1 block h-0.5 w-6 origin-center rounded transition-all duration-200",
-                      open ? "top-2 rotate-45" : "",
-                    )}
-                    style={{ backgroundColor: "currentColor" }}
-                  />
-                  <span
-                    className={cn(
-                      "absolute left-0 right-0 top-2 block h-0.5 w-6 origin-center rounded transition-all duration-200",
-                      open ? "opacity-0" : "opacity-100",
-                    )}
-                    style={{ backgroundColor: "currentColor" }}
-                  />
-                  <span
-                    className={cn(
-                      "absolute left-0 right-0 top-3 block h-0.5 w-6 origin-center rounded transition-all duration-200",
-                      open ? "top-2 -rotate-45" : "",
-                    )}
-                    style={{ backgroundColor: "currentColor" }}
-                  />
-                </div>
-              </button>
+            {
+              buttonVisibility ? (
+                  <button
+                    type="button"
+                    aria-label={open ? "Close menu" : "Open menu"}
+                    aria-expanded={open}
+                    aria-controls="mobile-menu"
+                    onClick={() => setOpen((v) => !v)}
+                    className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <span className="sr-only">
+                      {open ? "Close sidebar" : "Open sidebar"}
+                    </span>
+                    <div className="relative h-6 w-6" aria-hidden="true">
+                      <span
+                        className={cn(
+                          "absolute left-0 right-0 top-1 block h-0.5 w-6 origin-center rounded transition-all duration-200",
+                          open ? "top-2 rotate-45" : "",
+                        )}
+                        style={{ backgroundColor: "currentColor" }}
+                      />
+                      <span
+                        className={cn(
+                          "absolute left-0 right-0 top-2 block h-0.5 w-6 origin-center rounded transition-all duration-200",
+                          open ? "opacity-0" : "opacity-100",
+                        )}
+                        style={{ backgroundColor: "currentColor" }}
+                      />
+                      <span
+                        className={cn(
+                          "absolute left-0 right-0 top-3 block h-0.5 w-6 origin-center rounded transition-all duration-200",
+                          open ? "top-2 -rotate-45" : "",
+                        )}
+                        style={{ backgroundColor: "currentColor" }}
+                      />
+                    </div>
+                  </button>
+              ) : null
+            }
             </div>
             <div className="flex items-center justify-center">
               <Logo />
@@ -92,9 +97,13 @@ export default function Navbars() {
             <div className="flex items-center justify-center">
               <Logo />
             </div>
-            <div className="flex items-center justify-end">
-              <StartButton />
-            </div>
+            {
+              buttonVisibility ? (
+                <div className="flex items-center justify-end">
+                  <StartButton />
+                </div>
+              ) : null
+            }
           </div>
         </div>
       </header>
