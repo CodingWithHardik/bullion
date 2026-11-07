@@ -9,7 +9,7 @@ Bullion is a trading game with virtual cash. Buy low sell high and see how your 
 - Nodejs Installed
 
 - Package Installation 
-```npm ci```
+```npm install```
 
 ### Deployment
 - Development
