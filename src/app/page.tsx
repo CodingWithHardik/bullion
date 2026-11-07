@@ -21,7 +21,7 @@ const faqs = [
   {
     question: "What is Bullion?",
     answer:
-      "Bullion is a stock trading game. At start you get $10,000 in virtual cash and tree minutes to buy and sell stocks while prices move on a live feed.",
+      "Bullion is a stock trading game. At start you get $10,000 in virtual cash and three minutes to buy and sell stocks while prices move on a live feed.",
   },
   {
     question: "Is this real money?",
