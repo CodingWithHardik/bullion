@@ -1,99 +1,117 @@
-
 import Footer from "@/blocks/Footer";
 import Navbars from "@/blocks/Navbar";
 import { StockVelocity } from "@/blocks/StockVelocity";
 import CubeHero from "@/components/elements/CubeHero";
 import { StartButton } from "@/components/elements/StartButton";
-import Image from "next/image";
+import MicroSlats from "@/components/MicroSlats";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqs = [
+  {
+    question: "What is Bullion?",
+    answer:
+      "Bullion is a stock trading game. At start you get $10,000 in virtual cash and tree minutes to buy and sell stocks while prices move on a live feed.",
+  },
+  {
+    question: "Is this real money?",
+    answer:
+      "No Bullion uses virtual cash only. You can't deposit, withdraw, or lose real money",
+  },
+  {
+    question: "How do I buy and sell?",
+    answer:
+      "Pick a stock, then shoose a dollar amount to buy or a percentage of your position to sell. You can buy partial shares",
+  },
+  {
+    question: "Is there a fee?",
+    answer: "Yes there is a 0.1% fee applies to every buy and sell",
+  },
+  {
+    question: "How is my rank decided?",
+    answer: "Your rank depends on your return when the round ends.",
+  },
+];
 
 export default function Home() {
   return (
     <>
-    <Navbars buttonVisible={true}/>
-    <StockVelocity />
-     <section className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-16 md:gap-32 px-6 py-16 md:flex-row md:justify-between">
-      <div className="max-w-xl text-center md:text-left">
-        <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
-          Let Your Instincts Trade
-        </h1>
-        <p className="mt-5 text-lg text-gray-600">
-          Discover stocks, make your move and see how your market instincts stack up with Bullion
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
-          <StartButton />
-        </div>
-      </div>
-
-      <CubeHero
-        src="/stock.png"
-        className="block h-48 w-48 shrink-0 sm:h-64 sm:w-64 md:h-96 md:w-96"
-      />
-    </section>
-    <StockVelocity />
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-25"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+      <Navbars buttonVisible={true} />
+      <StockVelocity />
+      <section className="mx-auto flex max-w-6xl flex-col-reverse items-center gap-16 md:gap-32 px-6 py-16 md:flex-row md:justify-between">
+        <div className="max-w-xl text-center md:text-left">
+          <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
+            Let Your Instincts Trade
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-5 text-lg text-gray-600">
+            Discover stocks, make your move and see how your market instincts
+            stack up with Bullion
           </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 md:justify-start">
+            <StartButton />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <CubeHero
+          src="/stock.png"
+          className="block h-48 w-48 shrink-0 sm:h-64 sm:w-64 md:h-96 md:w-96"
+        />
+      </section>
+      <StockVelocity />
+      <section id="faq">
+        <div className="container mx-auto px-4 py-16">
+          <div className="mx-auto space-y-4 py-6 text-center">
+            <h2 className="mx-auto font-bold mb-2 max-w-3xl text-[42px] tracking-tighter text-balance">
+              Frequently Asked Questions
+            </h2>
+          </div>
+          <Accordion className="mx-auto w-full max-w-2xl">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
-      </main>
-    </div>
-    <Footer buttonVisible={true} />
+      </section>
+      <div className="relative h-16 w-full mx-auto overflow-hidden">
+        <MicroSlats
+          preset="swell"
+          color="#ef4444"
+          glintColor="#ffffff"
+          backgroundColor="#0a0a0a"
+          slatWidth={10}
+          slatHeight={25}
+          gap={3}
+          roundness={0.75}
+          interactive
+          cursorStrength={1}
+          cursorSize={40}
+          swirl={0}
+          trail={1.4}
+          lean={0}
+          intro
+          scale={1.5}
+          speed={0.6}
+          direction={250}
+          chop={0.55}
+          stretch={0}
+          glint={0.7}
+          contrast={1.25}
+          perspective={0.55}
+          fog={0.55}
+          introDuration={1.5}
+          paused={false}
+        />
+      </div>
+      <Footer buttonVisible={true} />
     </>
   );
 }
